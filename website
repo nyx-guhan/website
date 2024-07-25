@@ -1,0 +1,2310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Critter Graphix</title>
+    
+    <!-- CSS imports -->
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
+    <link rel="stylesheet"href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Combined styles -->
+    <style>
+       
+        body {
+            overflow-x: hidden;
+        }
+        /* Styles from the first page */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+        
+        /* First page styles */
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+             margin: 0;
+             padding: 0;
+             overflow-x: hidden;
+        }
+        
+        .landing-page {
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #6f4483 0%, #79366C 25%, #7F44A2 50%, #9676C2 75%, #884065 100%),
+            radial-gradient(circle at bottom left, #A22E6D 0%, transparent 50%);
+        }
+        .cardg {
+            width: 100vw;
+            height: 100vh;
+            max-width: 2000px;
+            position: relative;
+            overflow: hidden;
+            
+            border-radius: 0px;
+            background: 
+                radial-gradient(circle at top left, #711C6D 5%, transparent 60%),
+                radial-gradient(circle at bottom left, #B2094E 5%, transparent 60%),
+                radial-gradient(circle at right, #7B6BC3 20%, transparent 50%),
+                linear-gradient(to bottom right,  #5C4299 20%,transparent 50%);
+        }
+        .background-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+            opacity: 1;
+        }
+    
+        .content {
+            position: relative;
+            z-index: 1;
+            padding: 5vh 5vw;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            background: none;
+            backdrop-filter: none;
+        }
+    
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5vh;
+            position: relative; /* Allows positioning of child elements */
+        }
+    
+        .logo-img {
+            position: absolute;
+            top: -2vh; /* Example position, adjust as needed */
+            left: -2.5vw; /* Example position, adjust as needed */
+            width: 5vw;
+            height: auto;
+            mix-blend-mode: multiply;
+            z-index: 2; /* Ensure it appears above the background */
+        }
+    
+        .logo-text {
+            position: absolute;
+            top: -1vh; /* Example position, adjust as needed */
+            left: 2vw; /* Position relative to the image, adjust as needed */
+            font-size: 1.5vw; /* Increase font size for logo text */
+            font-weight: 600; /* Semi-bold weight */
+            color: white; /* Set the text color to white */
+            z-index: 2; /* Ensure it appears above the background */
+        }
+    
+        .logo-text span {
+            color: rgb(240, 69, 237); /* Keep "Graphix" colored */
+            margin-left: 0.5vw; /* Add space between Critter and Graphix */
+        }
+    
+        nav {
+            position: absolute;
+            top: 0vh;
+            right: -2vw;
+        }
+    
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 2vw;
+            font-size: 1vw;
+            font-weight: 600; /* Semi-bold weight for navigation links */
+        }
+    
+        .contact-btn {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 1vh 1.5vw;
+            border-radius: 5px;
+            transition: all 0.3s ease;
+            color: white;
+            font-weight: 600; /* Semi-bold weight for button text */
+        }
+    
+        .contact-btn:hover {
+            background-color: #822bd9; /* Lighter hover color */
+            transform: scale(1.05);
+            box-shadow: 0 0 15px rgba(209, 38, 175, 0.961);
+            color: #e328e6;
+        }
+    
+        main {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            max-width: 50%;
+            position: relative;
+            left: 5vw;
+            top: 5vh;
+        }
+    
+        h3 {
+            position: absolute;
+            top: 5%;
+            left: -15%;
+            font-size: 3vw;
+            margin-bottom: 2vh;
+            line-height: 1.5;
+            text-shadow: 2px 2px 10px rgba(78, 78, 78, 0.7);
+            letter-spacing: 0.05em;
+            padding: 5px;
+            font-weight: 600; /* Semi-bold weight for heading */
+            color: white; /* Change h1 color to white */
+        }
+    
+       
+    
+        .buttong {
+            padding: 10px 20px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600; /* Semi-bold weight for button text */
+            text-transform: uppercase;
+            color: white;
+            background: linear-gradient(90deg, #9e47c3, #ff33eb);
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 0 15px rgba(255, 102, 179, 0.5);
+            width: auto; /* Make the width flexible */
+            position: absolute; /* Allow free positioning */
+            bottom: 25%; /* Adjust this value to position the button vertically */
+            left: -1.5%; /* Adjust this value to position the button horizontally */
+            transform: translate(-50%, -50%); /* Center the button based on its position */
+        }
+    
+        .buttong:hover {
+            box-shadow: 0 0 20px rgba(255, 51, 177, 0.7);
+            transform: scale(1.05) translate(-50%, -50%);
+        }
+    
+        .buttong-icon {
+            margin-left: 8px;
+        }
+        
+        /* ... (rest of the first page styles) ... */
+
+        /* Second page styles */
+        
+        .corner-image {
+            position: fixed;
+            max-width: 20vw;
+            max-height: 20vh;
+            object-fit: cover;
+            mix-blend-mode: multiply;
+            z-index: 1000;
+            pointer-events: none;
+        }
+        
+        .top-left {
+            top: 2vh;
+            left: 2vw;
+        }
+        
+        .top-right {
+            top: 2vh;
+            right: 2vw;
+        }
+        
+        .bottom-left {
+            bottom: 2vh;
+            left: 2vw;
+        }
+        
+        .bottom-right {
+            bottom: 2vh;
+            right: 2vw;
+        }
+            :root {
+                --white-color: #fff;
+                --black-color: hsl(210, 12%, 15%);
+                --body-color: hsl(0, 0%, 100%);
+                --container-color: hsl(210, 24%, 8%);
+                --body-font: "Poppins", sans-serif;
+                --h2-font-size: 1.25rem;
+                --normal-font-size: .938rem;
+              }
+              
+              @media screen and (min-width: 1024px) {
+                :root {
+                  --h2-font-size: 1.5rem;
+                  --normal-font-size: 1rem;
+                }
+              }
+              
+              * {
+                box-sizing: border-box;
+                padding: 0;
+                margin: 0;
+              }
+              
+              body {
+                font-family: var(--body-font);
+                font-size: var(--normal-font-size);
+                background-color: var(--body-color);
+              }
+              
+              .container1 {
+                display: grid;
+                place-items: center;
+                margin-inline: 0.5rem;
+                padding-top: 2rem;
+                padding-bottom: 2rem;
+                height: auto;
+                
+                    min-height: 100vh;
+                  
+              }
+              
+              .card__container, .card__article {
+                display: grid;
+                gap: 1.5rem;
+              }
+              
+              .card__container {
+                padding-block: 4.5rem;
+                grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+                gap: 2rem;
+              }
+              
+              .card__shape-1 {
+                position: relative;
+                width: 100px;
+                height: 100px;
+                margin: 0 auto 1rem;
+                z-index: 2;
+                flex-shrink: 0;
+              }
+              
+              .card__shape-2 {
+                width: 80px;
+                height: 80px;
+                border-radius: 1.5rem;
+              }
+              
+              .card__shape-3 {
+                width: 60px;
+                height: 60px;
+                border-radius: 1rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+              
+              .card__shape-2, .card__shape-3 {
+                position: absolute;
+                inset: 0;
+                margin: auto;
+              }
+              
+              .card__icon {
+                font-size: 5rem;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                width: 100%;
+                height: 100%;
+              }
+              
+              .card__data {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+                width: 100%;
+                height: 100%;
+                justify-content: space-between;
+              }
+              
+              .card__title {
+                font-size: var(--h2-font-size);
+                margin-bottom: 0.25rem;
+                font-weight: 600;
+              }
+              
+              .card__description {
+                flex-grow: 1;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                display: -webkit-box;
+                -webkit-line-clamp: 3;
+                -webkit-box-orient: vertical;
+              }
+              
+              .card__button {
+                display: inline-block;
+                background-color: var(--white-color);
+                padding: 0.75rem 1.25rem;
+                border-radius: 0.5rem;
+                color: var(--black-color);
+                font-weight: 500;
+                text-decoration: none;
+                margin-top: auto;
+              }
+              
+              .card__orange {
+                --hue-1: 300;
+                --hue-2: 30;
+              }
+              
+              .card__green {
+                --hue-1: 180;
+                --hue-2: 50;
+              }
+              
+              .card__article {
+                position: relative;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: space-between;
+                color: var(--white-color);
+                text-align: center;
+                padding: 2rem 1.5rem;
+                border: 4px solid transparent;
+                background: linear-gradient(135deg, rgb(39, 59, 206) 0%, #4051d5 25%, #5e6ddf 50%, #5562c0 75%, #6672ce 100%);
+                border-radius: 1.25rem;
+                overflow: hidden;
+                height: 400px;
+                width: 100%;
+              }
+              
+              .card__article .watermark {
+                position: absolute;
+                top: 200px;
+                left: 300px;
+                transform: translate(-50%, -50%) scale(5);
+                font-size: 4rem;
+                opacity: 0.1;
+                z-index: 0;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                color: currentColor;
+              }
+              
+              .card__article > *:not(.watermark) {
+                position: relative;
+                z-index: 1;
+              }
+              
+              .project-buttons {
+                display: flex;
+                justify-content: center;
+                background-color: #f0f0f0;
+                border-radius: 20px;
+                padding: 4px;
+                margin: 10px auto 0;
+                width: fit-content;
+              }
+              
+              .project-button {
+                background-color: transparent;
+                border: none;
+                padding: 8px 16px;
+                font-size: 14px;
+                cursor: pointer;
+                border-radius: 16px;
+                transition: background-color 0.3s, color 0.3s;
+                color: #333;
+              }
+              
+              .project-button.active {
+                background: linear-gradient(to right, #9c03f4, #F88158);
+                color: white;
+                box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+              }
+              
+              .project-button:focus {
+                outline: none;
+              }
+              
+              .carousel-control-prev,
+              .carousel-control-next {
+                width: 10%;
+              }
+              
+              .carousel-control-prev-icon,
+              .carousel-control-next-icon {
+                background-color: rgba(0, 0, 0, 0.5);
+                border-radius: 50%;
+                padding: 10px;
+              }
+              
+              @media screen and (min-width: 1120px) {
+                .container1 {
+                  height: 70vh;
+                }
+                .card__container {
+                  grid-template-columns: repeat(3, 345px);
+                }
+                .card__article {
+                  padding: 3rem 2rem 2rem;
+                }
+              }
+              
+              @media screen and (max-width: 1119px) {
+                .card__container {
+                  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+                }
+              }
+              
+              @media screen and (max-width: 768px) {
+                .container1 {
+                  margin-inline: 1rem;
+                }
+                .card__article {
+                  padding: 2rem 1rem;
+                }
+                .card__shape-1 {
+                  width: 80px;
+                  height: 80px;
+                }
+                .card__shape-2 {
+                  width: 60px;
+                  height: 60px;
+                }
+                .card__shape-3 {
+                  width: 40px;
+                  height: 40px;
+                }
+                .card__icon {
+                  font-size: 3rem;
+                }
+              }
+              
+              @media screen and (max-width: 480px) {
+                h1 {
+                  font-size: 36px !important;
+                }
+                p {
+                  font-size: 18px !important;
+                }
+                .project-buttons {
+                  flex-direction: column;
+                  width: 80%;
+                }
+                .project-button {
+                  margin-bottom: 10px;
+                }
+                .card__article .watermark {
+                  font-size: 3rem;
+                  top: 150px;
+                  left: 200px;
+                }
+              }
+              
+              @media screen and (max-width: 320px) {
+                .card__article {
+                  padding: 1.5rem 1rem;
+                }
+                .card__title {
+                  font-size: 1.2rem;
+                }
+                .card__description {
+                  font-size: 0.9rem;
+                }
+                .card__button {
+                  padding: 0.5rem 1rem;
+                  font-size: 0.9rem;
+                }
+              }
+        
+
+        
+        /* ... (rest of the second page styles) ... */
+
+
+        /* Third page styles */
+        body {
+            overflow-x: hidden;
+        }
+.index1 {
+    max-width: 550px;
+    position: relative;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.index1::before,
+.index1::after {
+    background-color: #FF5F9E;
+    display: block;
+    width: 100px;
+    height: 3px;
+    content: "";
+    position: absolute;
+    top: 92px;
+    z-index: -1;
+}
+
+.index1::before {
+    left: -160px;
+}
+
+.index1::after {
+    right: -160px;
+}
+
+#page3 .btn-primary {
+    background-color: #FF5F9E;
+    border-color: #FF5F9E;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+#page3 .btn-primary:hover {
+    background-color: white;
+    color: #FF5F9E;
+}
+#page3 .h5{
+    right: -160px;
+
+}
+#page3 .img-fluid{
+    padding-left: 50;
+}
+
+
+@media (max-width: 768px) {
+    .index1::before,
+    .index1::after {
+        width: 100px;
+    }
+    
+    .index1::before {
+        left: -110px;
+    }
+    
+    .index1::after {
+        right: -110px;
+    }
+}
+        
+        /* Fourth page styles */
+        
+        #page4 .body {
+                overflow-x: hidden;
+            }
+#page4 .container {
+    height: 60vh;
+    width: 100%;
+    position: relative;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: visible;
+}
+
+#page4 .circle {
+    position: absolute;
+    height: 25vw;
+    width: 100vw;
+    border-radius: 50%;
+    background: linear-gradient(80deg, rgba(176, 145, 246, 0.8), rgba(223, 121, 246, 0.8), rgba(141, 198, 235, 0.8), rgba(201, 219, 238, 0.8));
+    filter: blur(30px);
+}
+
+#page4 .circle:nth-child(1) { top: 20%; left: -5%; }
+#page4 .circle:nth-child(2) { top: 20%; right: -5%; }
+#page4 .circle:nth-child(3) { bottom: 15%; left: 10%; }
+#page4 .circle:nth-child(4) { bottom: 15%; right: 15%; }
+#page4 .circle:nth-child(5) { top: 50%; left: 50%; transform: translate(-50%, -50%); }
+
+#page4 .man {
+    height: 40vh;
+    width: 90%;
+    padding: 20px;
+    background: linear-gradient(50deg, #b091f6, #df79f6, #df79f6, #c9dbee);
+    backdrop-filter: blur(70px);
+    z-index: 10;
+    display: flex;
+    position: relative;
+    border-radius: 20px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    justify-content: space-between;
+    align-items: center;
+    color: #fff;
+    text-shadow: 2px 2px rgba(0, 0, 0, 0.5);
+    overflow: visible;
+}
+
+#page4 .man .content {
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-direction: column;
+    width: 30%;
+    transition: opacity 2s ease-in-out;
+    opacity: 1;
+    padding: 20px;
+    z-index: 2;
+}
+
+#page4 .man .content h2 {
+    font-size: 4vw;
+    margin-bottom: 10px;
+    text-align: left;
+    transition: all 0.5s ease-in-out;
+}
+
+#page4 .man .content #counter {
+    font-size: 5vw;
+    font-weight: bold;
+    text-align: left;
+    transition: all 0.5s ease-in-out;
+}
+
+#page4 .man .image-box {
+    position: absolute;
+    right: -20%; 
+    top: 30%;
+    transform: translateY(-50%);
+    width: 75%;
+    height: 260%;
+    overflow: visible;
+    transition: all 1s ease-in-out;
+}
+
+#page4 #webgl-container {
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease-in-out;
+    z-index: 11;
+}
+
+/* Media Queries */
+@media (max-width: 100wh) {
+    #page4 .container { height: 80vh; }
+    #page4 .man {
+        height: 50vh;
+        flex-direction: column;
+    }
+    #page4 .man .content {
+        width: 100%;
+        text-align: center;
+        padding: 10px;
+    }
+    #page4 .man .image-box {
+        position: relative;
+        right: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        transform: translateY(0);
+    }
+    #page4 #webgl-container { height: 50%; }
+}
+
+@media (max-width: 100wh) {
+    #page4 .man { height: 60vh; }
+    #page4 .man .content h2 { font-size: 6vw; }
+    #page4 .man .content #counter { font-size: 8vw; }
+    #page4 .circle { height: 30vw; width: 100vw; }
+}
+
+    
+/* Fifth page styles */
+#page5 .body, html {
+    font-family: 'Inter', sans-serif;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    background-color: white;
+}
+#page5 .c {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+    padding: 4vh 4vw;
+    background:white;
+}
+
+#page5 .gradient-ball {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(30px);
+    opacity: 0.6;
+}
+
+#page5 .ball-1 {
+    width: 30%;
+    height: 30%;
+    background: radial-gradient(circle, #f0f0f0, #e0e0e0);
+    top: -10%;
+    left: -10%;
+}
+
+#page5 .ball-2 {
+    width: 20%;
+    height: 20%;
+    background: radial-gradient(circle, #ffffff, #f5f5f5);
+    bottom: -5%;
+    right: -5%;
+}
+
+#page5 .ball-3 {
+    width: 15%;
+    height: 15%;
+    background: radial-gradient(circle, #f8f8f8, #eeeeee);
+    top: 50%;
+    left: 20%;
+}
+
+#page5 .element {
+    position: absolute;
+    transform-origin: center;
+}
+
+#page5 .circle {
+    border-radius: 50%;
+}
+
+#page5 .t {
+    color: black;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+#page5 .card {
+    background: white;
+    border-radius: 2rem;
+    padding: 1.5rem;
+    box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,0.1);
+}
+
+#page5 .team-t {
+    position: relative;
+    display: inline-block;
+}
+
+#page5 .team-t::after {
+    content: '';
+    position: absolute;
+    top: -0.25rem;
+    left: -0.25rem;
+    right: -0.25rem;
+    bottom: -0.25rem;
+    border: 0.1rem dashed #b784ff;
+    border-radius: 2.25rem;
+}
+
+#page5 .blend-image {
+    mix-blend-mode: multiply;
+}
+
+/* Media queries for responsiveness */
+@media (max-width: 768px) {
+    /* Add the mobile-specific styles here */
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* Add the tablet-specific styles here */
+}
+
+
+/* Sixth page styles */
+#page6 {
+    background-color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 40vh;
+    margin-top: 0;
+}
+
+#page6 .testimonial-container {
+    width: 1000px;
+    position: relative;
+    padding: 20px;
+    left: 20px;
+}
+
+#page6 h1 {
+    color: #333;
+    margin-top: 10;
+    margin-bottom: 20px;
+    font-size: 35px;
+    top: 50px;
+    left: 20px;
+}
+
+#page6 .quote-mark {
+    position: absolute;
+    top: 80px;
+    left: 130px;
+    font-size: 60px;
+    color: #FF5F9E;
+    font-family: Georgia, serif;
+    line-height: 1;
+}
+
+#page6 .quote {
+    font-size: 18px;
+    color: #555;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    padding-left: 50px;
+    position: relative;
+    max-width: 700px;
+}
+
+#page6 .author {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+    
+}
+
+#page6 .author img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 30px;
+    margin-left: 100px;
+}
+
+#page6 .author-info {
+    display: flex;
+    flex-direction: column;
+    
+}
+
+#page6 .author-name {
+    font-weight: bold;
+    color: #333;
+}
+
+#page6 .author-title {
+    color: #777;
+    font-size: 14px;
+}
+
+#page6 .navigation {
+    position: absolute;
+    bottom: 20px;
+    right: 100px;
+    display: flex;
+    justify-content: space-between;
+    width: 100px;
+}
+
+#page6 .nav-text {
+    color: #999;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#page6 .nav-text:hover {
+    color: #333;
+}
+
+#page6 .slide {
+    display: none;
+}
+
+#page6 .active-slide {
+    display: block;
+}
+ 
+
+#page7 .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  #page7 .flex-item {
+    flex-basis: 30%;
+    margin: 20px;
+  }
+  
+  #page7 .comments {
+    margin-bottom: 20px;
+  }
+  #page7 .profiles{
+    padding-right: 60%;
+  }
+  
+ #page7 .profile {
+    text-align: center;
+   
+  }
+  
+  #page7 .profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 1000%;
+    margin-bottom: 10px;
+  }
+  #page7 .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  #page7 .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    mask-image: linear-gradient(
+      var(--mask-direction, to right),
+      hsl(0 0% 0% / 0),
+      hsl(0 0% 0% / 1) 20%,
+      hsl(0 0% 0% / 1) 80%,
+      hsl(0 0% 0% / 0)
+    );
+  }
+  
+  #page7 .marquee__group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--gap);
+    min-width: 100%;
+    animation: scroll-x var(--duration) linear infinite;
+  }
+  
+  @keyframes scroll-x {
+    from {
+      transform: translateX(var(--scroll-start));
+    }
+    to {
+      transform: translateX(var(--scroll-end));
+    }
+  }
+  .e{
+    background-color:#fff;
+  }
+  
+  
+  #page7 .wrapper2 {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 20vh;
+     
+  }
+  
+  #page7 .slider {
+      height: 110px;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+      
+  }
+  
+  #page7 .slider .slide-track {
+      -webkit-animation: scroll 30s linear infinite;
+      animation: scroll 30s linear infinite;
+      display: flex;
+      width: calc(250px * 14);
+  }
+  
+  #page7 .slider .slide {
+      height: 90px;
+      width: 250px;
+  }
+  
+  #page7 .slider .slide img {
+      width: 70%;
+      height: 70%;
+      border-radius: 10px;
+      
+  }
+  
+  @-webkit-keyframes scroll {
+      0% {
+          transform: translateX(0);
+      }
+      50% {
+          transform: translateX(calc(-300px * 7));
+      }
+  }
+  
+  @keyframes scroll {
+      0% {
+          transform: translateX(0);
+      }
+      50% {
+          transform: translateX(calc(-300px * 7));
+      }
+  }
+  
+  
+  
+  
+  
+
+
+  #page7 .flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  
+  #page7 .flex-item {
+    flex-basis: 30%;
+    margin: 20px;
+  }
+  
+  #page7 .comments {
+    margin-bottom: 20px;
+  }
+  #page7 .profiles{
+    padding-right: 60%;
+  }
+  
+  #page7 .profile {
+    text-align: center;
+   
+  }
+  
+  #page7 .profile img {
+    width: 50px;
+    height: 50px;
+    border-radius: 1000%;
+    margin-bottom: 10px;
+  }
+  #page7 .marquee-container {
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+  }
+  
+  #page7 .marquee {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+    gap: var(--gap);
+    mask-image: linear-gradient(
+      var(--mask-direction, to right),
+      hsl(0 0% 0% / 0),
+      hsl(0 0% 0% / 1) 20%,
+      hsl(0 0% 0% / 1) 80%,
+      hsl(0 0% 0% / 0)
+    );
+  }
+  
+  #page7 .marquee__group {
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    gap: var(--gap);
+    min-width: 100%;
+    animation: scroll-x var(--duration) linear infinite;
+  }
+  
+  @keyframes scroll-x {
+    from {
+      transform: translateX(var(--scroll-start));
+    }
+    to {
+      transform: translateX(var(--scroll-end));
+    }
+  }
+        
+    </style>
+</head>
+<body>
+    <!-- First page content -->
+    <div class="landing-page">
+        <div class="cardg">
+            <div class="content">
+                <header>
+                    <!-- ... (header content) ... -->
+                    <img src="ml1.png" alt="Mini Logo" class="logo-img">
+            <div class="logo-text">
+                Critter <span>Graphix</span>
+            </div>
+            <nav>
+                <a href="#">Home</a>
+                <a href="#">Portfolio</a>
+                <a href="#">Training</a>
+                <a href="#">Login</a>
+                <a href="#" class="contact-btn">Contact Us</a>
+            </nav>
+                </header>
+                <main>
+                    <h3>Designing digital <br>experiences as<br> distinct as<br> your brand</h3>
+                    <button class="buttong">
+                        Get Started
+                        <span class="button-icon">➔</span>
+                    </button>
+                </main>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Second page content -->
+    
+        
+        <!-- Carousel container -->
+        
+  
+            
+                <!-- Rest of your page content here -->
+            
+          
+        
+        
+          <div id="page2" class="page container my-4 text-center" style="padding-top: 30px;">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h1><span style="color: #FF5F9E; font-size: 50px;"><b>Services</b></span><span style="color: #FF5F9E; font-size: 50px;"><b> Provided</b></span></h1>
+                    <p style="font-size: 22px;"><span style="color: #060047;">Delivering bespoke brand identity solutions.</span></p>
+                </div>
+            </div>
+        </div>
+         <!-- Container for the buttons -->
+        <div class="project-buttons">
+        <!-- Branding Button -->
+        <button class="project-button active" id="brandingButton" onclick="showBranding()">Branding</button>
+        <!-- Automation Button -->
+        <button class="project-button" id="automationButton" onclick="showAutomation()">Automation</button>
+        </div>
+        
+          
+        <div id="carouselContainer">
+            <div id="carouselExampleControls1" class="carousel slide" data-ride="carousel">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-interval="2000">
+                      <div class="container1">
+                        <div class="card__container">
+                           <article class="card__article">
+                            <i class="ri-pages-line watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="ri-pages-line card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Website designing</h2>
+                                 
+                                 <p class="card__description">
+                                    Description for Website designing
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                  
+                           <article class="card__article card__orange">
+                            <i class="fa-solid fa-pen-nib watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-solid fa-pen-nib card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Content creation</h2>
+               
+                                 <p class="card__description">
+                                  Description for content creation
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                          
+                  
+                           <article class="card__article card__green">
+                            <i class="fa-regular fa-font-awesome watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-regular fa-font-awesome  card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Logo designing</h2>
+               
+                                 <p class="card__description">
+                                  Description for Logo designing
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                        </div>
+                     </div>
+                    </div>
+                    <div class="carousel-item" data-interval="2000">
+                      <div class="container1">
+                        <div class="card__container">
+                           <article class="card__article">
+                            <i class="fa-solid fa-palette watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-solid fa-palette card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Graphics Designing</h2>
+                                 
+                                 <p class="card__description">
+                                    Description for Graphics Designing
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                  
+                           <article class="card__article card__orange">
+                            <i class="fa-solid fa-video watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-solid fa-video card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Video Graphy</h2>
+               
+                                 <p class="card__description">
+                                  Description for Video Graphy
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                  
+                           <article class="card__article card__green">
+                            <i class="fa-solid fa-cube watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-solid fa-cube card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">2D and 3D Animation</h2>
+               
+                                 <p class="card__description">
+                                  Description for 2D and 3D Animation
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                           
+                        </div>
+                     </div>
+                    </div>
+                    <div class="carousel-item" data-interval="2000">
+                      <div class="container1">
+                        <div class="card__container">
+                          <article class="card__article">
+                            <i class="fab fa-youtube watermark"></i>
+                            <div class="card__shape-1">
+                              <div class="card__shape-2"></div>
+                              <div class="card__shape-3">
+                                <i class="fab fa-youtube card__icon"></i>
+                              </div>
+                            </div>
+                            <div class="card__data">
+                              <h2 class="card__title">YouTube</h2>
+                              <p class="card__description">Description for YouTube services</p>
+                              <a href="#" class="card__button">Enroll now</a>
+                            </div>
+                          </article>
+                    
+                          <article class="card__article card__orange">
+                            <i class="fas fa-film watermark"></i>
+                            <div class="card__shape-1">
+                              <div class="card__shape-2"></div>
+                              <div class="card__shape-3">
+                                <i class="fas fa-film card__icon"></i>
+                              </div>
+                            </div>
+                            <div class="card__data">
+                              <h2 class="card__title">Reels</h2>
+                              <p class="card__description">Description for Reels services</p>
+                              <a href="#" class="card__button">Enroll now</a>
+                            </div>
+                          </article>
+                    
+                          <article class="card__article card__green">
+                            <i class="fas fa-vector-square watermark"></i>
+                            <div class="card__shape-1">
+                              <div class="card__shape-2"></div>
+                              <div class="card__shape-3">
+                                <i class="fas fa-vector-square card__icon"></i>
+                              </div>
+                            </div>
+                            <div class="card__data">
+                              <h2 class="card__title">Logo</h2>
+                              <p class="card__description">Description for Logo services</p>
+                              <a href="#" class="card__button">Enroll now</a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="carousel-item" data-interval="2000">
+                      <div class="container1">
+                        <div class="card__container">
+                          <article class="card__article">
+                            <i class="fas fa-share-alt watermark"></i>
+                            <div class="card__shape-1">
+                              <div class="card__shape-2"></div>
+                              <div class="card__shape-3">
+                                <i class="fas fa-share-alt card__icon"></i>
+                              </div>
+                            </div>
+                            <div class="card__data">
+                              <h2 class="card__title">Social Media</h2>
+                              <p class="card__description">Description for Social Media services</p>
+                              <a href="#" class="card__button">Enroll now</a>
+                            </div>
+                          </article>
+                    
+                          <article class="card__article card__orange">
+                            <i class="fas fa-image watermark"></i>
+                            <div class="card__shape-1">
+                              <div class="card__shape-2"></div>
+                              <div class="card__shape-3">
+                                <i class="fas fa-image card__icon"></i>
+                              </div>
+                            </div>
+                            <div class="card__data">
+                              <h2 class="card__title">Poster</h2>
+                              <p class="card__description">Description for Poster services</p>
+                              <a href="#" class="card__button">Enroll now</a>
+                            </div>
+                          </article>
+                    
+                          <article class="card__article card__green">
+                            <i class="fas fa-id-card watermark"></i>
+                            <div class="card__shape-1">
+                              <div class="card__shape-2"></div>
+                              <div class="card__shape-3">
+                                <i class="fas fa-id-card card__icon"></i>
+                              </div>
+                            </div>
+                            <div class="card__data">
+                              <h2 class="card__title">Brand Identity</h2>
+                              <p class="card__description">Description for Brand Identity services</p>
+                              <a href="#" class="card__button">Enroll now</a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                    
+                    <div class="carousel-item" data-interval="2000">
+                      <div class="container1">
+                        <div class="card__container">
+                          <article class="card__article">
+                            <i class="fas fa-laptop-code watermark"></i>
+                            <div class="card__shape-1">
+                              <div class="card__shape-2"></div>
+                              <div class="card__shape-3">
+                                <i class="fas fa-laptop-code card__icon"></i>
+                              </div>
+                            </div>
+                            <div class="card__data">
+                              <h2 class="card__title">Web Development</h2>
+                              <p class="card__description">Description for Web Development services</p>
+                              <a href="#" class="card__button">Enroll now</a>
+                            </div>
+                          </article>
+                        </div>
+                      </div>
+                    </div>
+                </div>
+                
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls1" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls1" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        
+            <div id="carouselExampleControls2" class="carousel slide" data-ride="carousel" style="display: none;">
+                <div class="carousel-inner">
+                    <div class="carousel-item active" data-interval="2000">
+                      <div class="container1">
+                        <div class="card__container">
+                           <article class="card__article">
+                            <i class="fa-brands fa-x-twitter watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-brands fa-x-twitter card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">X-former twitter</h2>
+                                 
+                                 <p class="card__description">
+                                    Description for X-former twitter
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                  
+                           <article class="card__article card__orange">
+                            <i class="fa-brands fa-discord watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-brands fa-discord card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Discord automation</h2>
+               
+                                 <p class="card__description">
+                                  Description for Discord automation
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                  
+                           <article class="card__article card__green">
+                            <i class="ri-openai-line watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="ri-openai-line card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Ai sales person</h2>
+               
+                                 <p class="card__description">
+                                  Description for Ai sales person
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                        </div>
+                     </div>
+                    </div>
+                    <div class="carousel-item" data-interval="2000">
+                      <div class="container1">
+                        <div class="card__container">
+                           <article class="card__article">
+                            <i class="fa-solid fa-people-arrows watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-solid fa-people-arrows card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Onboarding Process</h2>
+                                 
+                                 <p class="card__description">
+                                    Description for Onboarding Process
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                  
+                           <article class="card__article card__orange">
+                            <i class="fa-regular fa-calendar-check watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-regular fa-calendar-check card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">Appointment Settings</h2>
+               
+                                 <p class="card__description">
+                                  Description for Appointment Settings
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                  
+                           <article class="card__article card__green">
+                            <i class="fa-solid fa-cube watermark"></i>
+                              <div class="card__scale-1"></div>
+                              <div class="card__scale-2"></div>
+               
+                              <div class="card__shape-1">
+                                 <div class="card__shape-2"></div>
+                                 <div class="card__shape-3">
+                                  <i class="fa-solid fa-cube card__icon"></i>
+                                 </div>
+                              </div>
+                  
+                              <div class="card__data">
+                                 <h2 class="card__title">2D and 3D Animation</h2>
+               
+                                 <p class="card__description">
+                                  Description for 2D and 3D Animation
+                                 </p>
+               
+                                 <a href="#" class="card__button">
+                                    Enroll now
+                                 </a>
+                              </div>
+                           </article>
+                        </div>
+                     </div>
+                    </div>
+                </div>
+                <button class="carousel-control-prev" type="button" data-target="#carouselExampleControls2" data-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-target="#carouselExampleControls2" data-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
+            </div>
+        </div>
+        </div>
+        
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.2/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<script>
+   function showBranding() {
+     document.getElementById('carouselExampleControls1').style.display = 'block';
+     document.getElementById('carouselExampleControls2').style.display = 'none';
+     document.getElementById('brandingButton').classList.add('active');
+     document.getElementById('automationButton').classList.remove('active');
+     
+     // Show branding images, hide automation images
+     document.querySelectorAll('.branding-image').forEach(img => img.style.display = 'block');
+     document.querySelectorAll('.automation-image').forEach(img => img.style.display = 'none');
+   }
+
+   function showAutomation() {
+     document.getElementById('carouselExampleControls1').style.display = 'none';
+     document.getElementById('carouselExampleControls2').style.display = 'block';
+     document.getElementById('automationButton').classList.add('active');
+     document.getElementById('brandingButton').classList.remove('active');
+     
+     // Show automation images, hide branding images
+     document.querySelectorAll('.automation-image').forEach(img => img.style.display = 'block');
+     document.querySelectorAll('.branding-image').forEach(img => img.style.display = 'none');
+   }
+
+   // Set initial state
+   showBranding();
+</script>
+
+
+        
+        
+        
+
+ 
+
+
+     <!-- ... (previous content) ... -->
+
+<!-- Third page content -->
+<div id="page3" class="page container my-4">
+    <div class="row justify-content-center">
+        <div class="col-12 index1">
+            <h4><span style="color: #FF5F9E; font-size: 50px;"><b>Services Offered As Packages</b></span></h4>
+            <p style="font-size: 22px;"><span style="color: #060047;">Delivering bespoke brand identity solutions as packages.</span></p>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row align-items-center">
+            <div class="col-md-6">
+                <img src="images 2/download2_2_25.png"style="width: 50%;height: 50%;margin-left: 20%;"  class="img-fluid" alt="A screenshot of a software interface with a blue theme.">
+            </div>
+            <div class="col-md-6">
+                <h6 style="color: #FF5F9E;font-size:35px;margin-left:-15%;">BRANDING PACKAGE</h6>
+                <h5 style=" font-size: 30px;margin-left:-15%">Enable those closest to the real-world details of your business to customize the apps that accelerate how work gets done.</h5>
+                <a href="branding.html" class="btn btn-primary" id="ab" style="margin-left:-15%;">Explore →</a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container my-5">
+        <div class="row align-items-center">
+            <div class="col-md-6 order-md-2">
+                <img src="images 2/download3_25.png"style="width: 50%;height: 50%;margin-left: 46%;"  class="img-fluid1" alt="A screenshot of a software interface with a blue theme.">
+            </div>
+            <div class="col-md-6 order-md-1">
+                <h6 style="color: #FF5F9E;font-size:35px;margin-left:19%;">AUTOMATION PACKAGE</h6>
+                <h5 style=" font-size: 30px;margin-left:19%;margin-right:-30%;">Enable those closest to the real-world details of your business to customize the apps that accelerate how work gets done.</h5>
+                <a href="#" class="btn btn-primary" id="ab" style="margin-left:19%;">Explore →</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<!-- ... (rest of the content) ... --> 
+ 
+
+
+    <!-- ... (previous content) ... -->
+
+<!-- ... (previous content) ... -->
+
+<!-- Fourth page content -->
+<div id="page4" class="page container-fluid p-0">
+    <div class="container">
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="circle"></div>
+        <div class="man">
+            <div class="content" id="content">
+                <h2 id="step-title">Live Projects</h2>
+                <div id="counter">01</div>
+            </div>
+            <div class="image-box">
+                <canvas id="webgl-container"></canvas>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const canvas = document.getElementById('webgl-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, canvas.clientWidth / canvas.clientHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ canvas, antialias: true, alpha: true });
+    renderer.setSize(canvas.clientWidth, canvas.clientHeight);
+
+    const imageUrls = [
+        'https://i.ibb.co/sy5CR68/Whats-App-Image-2024-07-09-at-23-09-16-7fe12d25-removebg-preview.png',
+        'https://i.ibb.co/mFPBkVG/Whats-App-Image-2024-07-09-at-22-10-46-dd6f8648-removebg-preview.png',
+        'https://i.ibb.co/b6bKxf0/Whats-App-Image-2024-07-09-at-23-00-00-81053a85-removebg-preview.png'
+    ];
+
+    let currentImageIndex = 0;
+    let currentPlane;
+
+    function loadTexture(url) {
+        const loader = new THREE.TextureLoader();
+        return new Promise((resolve, reject) => {
+            loader.load(url, texture => resolve(texture), undefined, reject);
+        });
+    }
+
+    function createPlane(texture, state) {
+        const aspectRatio = texture.image.width / texture.image.height;
+        const geometry = new THREE.PlaneGeometry(24 * aspectRatio, 24);
+        const material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide, transparent: true });
+        const plane = new THREE.Mesh(geometry, material);
+        scene.add(plane);
+
+        if (state === 1) {
+            const widthScale = 0.6; 
+            const heightScale = 0.6; 
+            plane.scale.set(widthScale, heightScale, 1); 
+            plane.position.set(-1.9, -1.9, -7); 
+        } else if (state === 2) {
+            plane.scale.set(0.8, 0.8, 0.8);
+            plane.position.set(0.5, 0.5, -7);
+        } else {
+            plane.scale.set(0.8, 0.8, 0.8);
+            plane.position.set(0, 0, -7);
+        }
+
+        plane.rotation.y = 0;
+        camera.position.z = 12;
+
+        return plane;
+    }
+
+    function animate() {
+        requestAnimationFrame(animate);
+        renderer.render(scene, camera);
+    }
+
+    function onWindowResize() {
+        const newWidth = canvas.clientWidth;
+        const newHeight = canvas.clientHeight;
+        camera.aspect = newWidth / newHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(newWidth, newHeight);
+    }
+
+    window.addEventListener('resize', onWindowResize);
+
+    function changeState(newState) {
+        const titles = ['Live Projects', 'Onboarding', 'Completed'];
+        const counters = ['01', '02', '03'];
+
+        document.getElementById('step-title').style.opacity = 0;
+        document.getElementById('counter').style.opacity = 0;
+        canvas.style.opacity = 0;
+
+        setTimeout(() => {
+            document.getElementById('step-title').textContent = titles[newState];
+            document.getElementById('counter').textContent = counters[newState];
+            document.getElementById('step-title').style.opacity = 1;
+            document.getElementById('counter').style.opacity = 1;
+
+            loadTexture(imageUrls[newState]).then(texture => {
+                if (currentPlane) {
+                    scene.remove(currentPlane);
+                }
+                currentPlane = createPlane(texture, newState);
+                canvas.style.opacity = 1;
+            });
+        }, 500);
+    }
+
+    function init() {
+        loadTexture(imageUrls[0]).then(texture => {
+            if (texture) {
+                currentPlane = createPlane(texture, 0);
+                animate();
+            }
+        }).catch(error => {
+            console.error('Error loading texture:', error);
+        });
+
+        setInterval(() => {
+            currentImageIndex = (currentImageIndex + 1) % 3;
+            changeState(currentImageIndex);
+        }, 5000);
+    }
+
+    init();
+});
+</script>
+
+<!-- ... (closing tags) ... -->
+
+
+
+<!-- ... (closing tags) ... -->
+ <!-- Fifth page content -->
+<div id="page5" class="page container-fluid p-0">
+    <!-- Content will go here -->
+    <!-- Fifth page content -->
+<div id="page5" class="page container-fluid p-0">
+    <div class="c">
+        <div class="gradient-ball ball-1"></div>
+        <div class="gradient-ball ball-2"></div>
+        <div class="gradient-ball ball-3"></div>
+
+        <div class="element t" style="left: 4vw; top: 8vh; font-size: 6vw; font-weight: 900;">Meet Our</div>
+        <div class="element team-t" style="left: 0.5vw; top: 18vh; font-size: 6vw; font-weight: 900; color: #b784ff; background: rgba(183, 132, 255, 0.2); padding: 0.5vw 2vw; border-radius: 4vw;">vision</div>
+
+        <div class="element card" style="width: 25vw;height: 30; left: 4vw; top: 50vh; transform: rotate(-5deg);">
+            <h3 style="font-size: 1.8vw;"></h3>
+            <p style="margin-top: 1vw; color: #666; font-size: 1.2vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="element card" style="width: 25vw; left: 25vw; top: 60vh; transform: rotate(-8deg);">
+            <h2 style="font-size: 1.8vw;">2019</h2>
+            <p style="margin-top: 1vw; color: #666; font-size: 1.2vw;">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+        </div>
+
+        <div class="element circle" style="width: 40vw; height: 40vw; right: 6vw; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #f8f4f4, #f3eeff); box-shadow: 0px 0.4vw 0.4vw rgba(0, 0, 0, 0.25);"></div>
+        <div class="element circle" style="width: 30vw; height: 30vw; right: 11vw; top: 50%; transform: translateY(-50%); background: linear-gradient(90deg, #c69dff, #d6b9ff);"></div>
+        <div class="element circle" style="width: 20vw; height: 20vw; right: 16vw; top: 50%; transform: translateY(-50%); background: linear-gradient(135deg, #ffffff, #f0ebff)"></div>
+        <div class="element circle" style="width: 10vw; height: 10vw; right: 21vw; top: 50%; transform: translateY(-50%); background: linear-gradient(90deg, #c69dff, #d6b9ff)"></div>
+
+        <img class="element circle blend-image" style="width: 8vw; height: 8vw; right: 15vw; top: 80vh; object-fit: cover;" src="i7.jpg" alt="Team member 1">
+        <img class="element circle blend-image" style="width: 10vw; height: 10vw; right: 10vw; top: 10vh; object-fit: cover;" src="i6.jpg" alt="Team member 2">
+        <img class="element circle blend-image" style="width: 10vw; height: 10vw; right: 40vw; top: 15vh; object-fit: cover;" src="i1.png" alt="Team member 4">
+
+        <div class="element circle" style="width: 4vw; height: 4vw; right: 30vw; top: 36vh;  background: linear-gradient(90deg, #ac5fe2, #dd54f5); box-shadow: 0px 0.4vw 0.4vw rgba(0, 0, 0, 0.25);"></div>
+        <div class="element circle" style="width: 4vw; height: 4vw; left: 25vw; top: 45vh;  background: linear-gradient(90deg, #9e61f4, #a45ec6); box-shadow: 0px 0.4vw 0.4vw rgba(0, 0, 0, 0.25);"></div>
+        <div class="element circle" style="width: 4vw; height: 4vw; left: 46vw; top: 53vh; background: linear-gradient(90deg, #9e61f4, #a45ec6); box-shadow: 0px 0.4vw 0.4vw rgba(0, 0, 0, 0.25);"></div>
+
+        <div class="element circle" style="width: 5vw; height: 5vw; right: 5vw; top: 7vh; background: linear-gradient(135deg, #8557c6, #c463f4) "></div>
+        <div class="element circle" style="width: 3vw; height: 3vw; right: 30vw; top: 11vh; background: linear-gradient(90deg, #9e61f4, #a45ec6);  filter: blur(0.5vw);"></div>
+        <div class="element circle" style="width: 5vw; height: 5vw; right: 60vw; top: 15vh; background: linear-gradient(90deg, #9a52ff, #c87bee);  filter: blur(0.5vw);"></div>
+        <div class="element circle" style="width: 8vw; height: 8vw; right: 65vw; top: 90vh; background: linear-gradient(90deg, #9244ff, #a70cf4); filter: blur(3vw);"></div>
+    </div>
+</div>
+</div>
+
+<!-- Sixth page content -->
+<div id="page6" class="page container-fluid p-0">
+    <div class="testimonial-container">
+        
+        <!-- Testimonial slides and navigation will go here -->
+        <!-- Sixth page content -->
+<div id="page6" class="page container-fluid p-0">
+    <div class="testimonial-container">
+        <h1 style="font-size:40px;margin-left:10%;">Trusted by clients</h1>
+        <div class="slide active-slide">
+            <div class="quote-mark"style="margin-left:-10;">"</div>
+            <p class="quote" style="margin-left:14%;margin-right:4%;">The world is not standing still and only new approaches with individual vision are increasingly able to achieve the desired results. More than 15 years of experience have convinced us that the best priority is long-term prospects, customer trust and a solid reputation. We use experience, modern technology and safe solutions. We are building the future just for you.</p>
+            <div class="author">
+                <img src="https://via.placeholder.com/50" alt="Sebastian Westergren">
+                <div class="author-info">
+                    <span class="author-name">Sebastian Westergren</span>
+                    <span class="author-title">Development director</span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="quote-mark">"</div>
+            <p class="quote"style="margin-left:14%;margin-right:4%;">Innovation distinguishes between a leader and a follower. We believe in pushing boundaries and setting new standards in every field. Our clients' success is a testament to our commitment to excellence.</p>
+            <div class="author">
+                <img src="https://via.placeholder.com/50" alt="Anna Smith">
+                <div class="author-info">
+                    <span class="author-name">Anna Smith</span>
+                    <span class="author-title">Marketing Manager</span>
+                </div>
+            </div>
+        </div>
+        <div class="slide">
+            <div class="quote-mark">"</div>
+            <p class="quote"style="margin-left:14%;margin-right:4%;">Our mission is to deliver unparalleled value through innovation, quality, and sustainability. We thrive on challenges and constantly seek new ways to make a positive impact in the lives of our clients.</p>
+            <div class="author">
+                <img src="https://via.placeholder.com/50" alt="John Doe">
+                <div class="author-info">
+                    <span class="author-name">John Doe</span>
+                    <span class="author-title">CEO</span>
+                </div>
+            </div>
+        </div>
+        <div class="navigation">
+            <span class="nav-text" id="prev-slide">←</span>
+            <span class="nav-text" id="slide-number">01 / 03</span>
+            <span class="nav-text" id="next-slide">→</span>
+        </div>
+    </div>
+</div>
+    </div>
+</div>
+<script>
+// Testimonial slider
+document.addEventListener('DOMContentLoaded', function() {
+    const slides = document.querySelectorAll('#page6 .slide');
+    const prevSlide = document.getElementById('prev-slide');
+    const nextSlide = document.getElementById('next-slide');
+    const slideNumber = document.getElementById('slide-number');
+    let currentSlide = 0;
+
+    function showSlide(index) {
+        slides.forEach((slide, i) => {
+            slide.classList.toggle('active-slide', i === index);
+        });
+        slideNumber.textContent = `${String(index + 1).padStart(2, '0')} / ${String(slides.length).padStart(2, '0')}`;
+    }
+
+    prevSlide.addEventListener('click', () => {
+        currentSlide = (currentSlide > 0) ? currentSlide - 1 : slides.length - 1;
+        showSlide(currentSlide);
+    });
+
+    nextSlide.addEventListener('click', () => {
+        currentSlide = (currentSlide < slides.length - 1) ? currentSlide + 1 : 0;
+        showSlide(currentSlide);
+    });
+
+    showSlide(currentSlide);
+});
+</script>
+  
+<div id="page7" class="page container-fluid p-0">
+    <div class="testimonial-container">
+        <div class="container-fluid e">
+
+            <div class="row">
+                <div class="col-12">
+                  <div class="row">
+                    <div class="e1 col-4" style="text-align: left; padding-bottom: 50px; padding-top: 50px; color: #580CCF;">
+                      <h1 style="font-size: 50px;"><b>Our Featured Clients</b></h1>
+                      <h4 style="text-align:left;">Work with top global brands, creating creative and connected brand experiences and events Trusted by clients to support their ambitious goals,<br> Thoughtworks empowers organizations<br>to innovate constantly. </h4>
+                    </div>
+                    <div class="col-8 marquee-container" style="text-align: right;">
+                    <div class="marquee">
+                    <div class="marquee__group">
+                    <div class="wrapper2">
+                        <div class="slider">
+                            <div class="slide-track">
+                    
+                                <!-- Img Code -->
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+        
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+        
+                                <!-- Img Code End -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+               
+                        
+                    <div class="marquee">
+                    <div class="marquee__group">
+                    <div class="wrapper2">
+                        <div class="slider">
+                            <div class="slide-track">
+                    
+                                <!-- Img Code -->
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+        
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+        
+                                <!-- Img Code End -->
+                                
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+        
+        
+                    <div class="marquee">
+                    <div class="marquee__group">
+                    <div class="wrapper2">
+                        <div class="slider">
+                            <div class="slide-track">
+                    
+                                <!-- Img Code -->
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 6.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 7.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 8.png">
+                                </div>
+                                
+                                <div class="slide">
+                                    <img src="images 2/image 9.png">
+                                </div>
+        
+                                <div class="slide">
+                                    <img src="images 2/image 13.png">
+                                </div>
+        
+                                <!-- Img Code End -->
+                                
+                            </div>
+                        </div>
+                    </div>
+        
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        <footer class="text-center text-lg-start text-white" style="background-color: #580CCF; padding: 30px 0;">
+            <div class="container">
+              <div class="row align-items-start">
+                <!-- First Column -->
+                <div class="col-md-3 mb-4">
+                  <h6 class="mb-3" style="font-size: 20px;">Subscribe to our Newsletter</h6>
+                  <form class="form-inline">
+                    <div class="input-group">
+                      <input type="text" class="form-control" placeholder="Email" aria-label="Email" aria-describedby="basic-addon1">
+                      <div class="input-group-append">
+                        <span class="input-group-text" id="basic-addon1">@</span>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+                <!-- Second Column -->
+                <div class="col-md-3 mb-4">
+                  <h6 class="mb-3" style="font-size: 20px;">Services</h6>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Email marketing</a></p>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Campaigns</a></p>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Branding</a></p>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Offline</a></p>
+                </div>
+                <!-- Third Column -->
+                <div class="col-md-3 mb-4">
+                  <h6 class="mb-3" style="font-size: 20px;">About</h6>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Our Story</a></p>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Benefits</a></p>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Team</a></p>
+                  <p><a href="#" class="text-reset" style="text-decoration: none;">Careers</a></p>
+                </div>
+                <!-- Fourth Column -->
+                <div class="col-md-3 mb-4">
+                  <h6 class="mb-3" style="font-size: 20px;">Contact</h6>
+                  <p class="mb-1">Critter Graphics</p>
+                  <p class="mb-1">info@CritterGraphics.com</p>
+                  <p class="mb-3">+91 8220210770</p>
+                  
+                  <!-- Social Media Icons -->
+                  <div>
+                    <a href="https://www.facebook.com/AmazonIN/" class="me-3 text-reset"><i class="bi bi-facebook" style="font-size: 24px;"></i></a>
+                    <a href="https://twitter.com/amazon?" class="me-3 text-reset"><i class="bi bi-twitter" style="font-size: 24px;"></i></a>
+                    <a href="https://www.instagram.com/amazon/" class="text-reset"><i class="bi bi-instagram" style="font-size: 24px;"></i></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </footer>
+        
+         
+ 
+</html>
