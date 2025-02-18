@@ -24,6 +24,6 @@ Responsive UI for seamless user experience.
 Secure authentication and user management.
 Dynamic content updates via API integration.
 SEO optimization for better online presence.
-Deployment
 
-Live Demo: [Add your hosted website link]
+
+
